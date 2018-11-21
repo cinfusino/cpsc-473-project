@@ -8,53 +8,45 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterText: '',
-      filterType: ''
+      filterTitle: '',
+      filterGenre: ''
 
     }
   }
 
-  filterUpdate(value , type) {
+  filterUpdate(title, genre) {
     this.setState({
-      filterText: value,
-      filterType: type
+      filterTitle: title,
+      filterGenre: genre
     })
+  }
+
+  render() {
+    return(
+
+      <div>
+        <div className="nav-bar">
+          <a href="#Home">Home</a>
+          <Search
+            filterUpdate={this.filterUpdate.bind(this)}
+          />
+        </div>
+          <MovieList
+            data={this.props.data}
+            filterTitle={this.state.filterTitle}
+            filterGenre={this.state.filterGenre}
+          />
+      </div>
+    )
   }
 
   // render() {
   //   return(
-  //
   //     <div>
-  //       <div className="nav-bar">
-  //         <a href="#Home">Home</a>
-  //         <Search
-  //           searchType="Title"
-  //           filterText={this.state.filterText}
-  //           filterUpdate={this.filterUpdate.bind(this)}
-  //         />
-  //         <Search
-  //           searchType="Genre"
-  //           filterText={this.state.filterText}
-  //           filterUpdate={this.filterUpdate.bind(this)}
-  //         />
-  //
-  //       </div>
-  //         <MovieList
-  //           data={this.props.data}
-  //           filterText={this.state.filterText}
-  //           filterType={this.state.filterType}
-  //         />
+  //       <ReviewList />
   //     </div>
   //   )
   // }
-
-  render() {
-    return(
-      <div>
-        <ReviewList />
-      </div>
-    )
-  }
 }
 
 

@@ -1,23 +1,29 @@
 import React from 'react';
 
-export default ({ data, filterText, filterType } ) => {
+export default ({ data, filterTitle, filterGenre } ) => {
   const movieList = data
     .filter(movie => {
       //remove movies that do not match
-      if (filterType == "" && filterText =="")
+      if (filterTitle == "" && filterGenre == "")
       {
-        return movie.title.toLowerCase().indexOf(filterText) >= 0
+        return movie.title.toLowerCase().indexOf(filterTitle) >= 0
       }
-      if (filterType == "Genre"){
-        return movie.genre.toLowerCase().indexOf(filterText) >= 0
+      if (filterGenre != "" && filterTitle != "") {
+        const movie1 = movie.title.toLowerCase().indexOf(filterTitle) >= 0
+        const movie2 = movie.genre.toLowerCase().indexOf(filterGenre) >= 0
+        let movie3 = false
+        if(movie1 && movie2) {
+          movie3 = true
+        }
+        return movie3
       }
-      if (filterType == "Title") {
-        return movie.title.toLowerCase().indexOf(filterText) >= 0
+      if (filterGenre != ""){
+        return movie.genre.toLowerCase().indexOf(filterGenre) >= 0
       }
-
+      if (filterTitle != "") {
+        return movie.title.toLowerCase().indexOf(filterTitle) >= 0
+      }
     })
-
-
     .map(movie => {
       let avgRating = 0;
       for (let i = 0; i < movie.reviews.length;i++)
