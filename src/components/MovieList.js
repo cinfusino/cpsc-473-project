@@ -1,16 +1,22 @@
 import React from 'react';
 
-export default ({ data, filterText } ) => {
+export default ({ data, filterText, filterType } ) => {
   const movieList = data
     .filter(movie => {
       //remove movies that do not match
-      return movie.title.toLowerCase().indexOf(filterText) >= 0
+      if (filterType == "" && filterText =="")
+      {
+        return movie.title.toLowerCase().indexOf(filterText) >= 0
+      }
+      if (filterType == "Genre"){
+        return movie.genre.toLowerCase().indexOf(filterText) >= 0
+      }
+      if (filterType == "Title") {
+        return movie.title.toLowerCase().indexOf(filterText) >= 0
+      }
+
     })
 
-    // .filter(movie => {
-    //   //remove movies that do not match
-    //   return movie.genre.toLowerCase().indexOf(filterText) >= 0
-    // })
 
     .map(movie => {
       let avgRating = 0;

@@ -4,7 +4,7 @@ class Search extends Component {
 
   filterUpdate() {
     const value = this.searchValue.value;
-    this.props.filterUpdate(value);
+    this.props.filterUpdate(value, this.props.searchType);
   }
 
   render() {
