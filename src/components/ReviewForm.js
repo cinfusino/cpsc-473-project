@@ -1,113 +1,98 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import shortid from "shortid";
-
-const initialState = {
-  reviewAuthor:'',
-  rating: '',
-  reviewTitle:'',
-  reviewText:'',
-
-  authorError:'',
-  titleError:'',
-  ratingError:'',
-  textError:''
-}
 
 export default class ReviewForm extends React.Component {
 
-  state = initialState;
+  state = {
 
-  handleChange = event => {
-    this.setState({[event.target.name]: event.target.value});
-  };
+  }
 
-  validate = () => {
-    let authorError = "";
-    let titleError = "";
-    let ratingError = "";
-    let textError = "";
+  constructor(props) {
+    super(props);
+  }
 
-    if (!this.state.reviewAuthor) {
-      authorError = "ERROR: Author cannot be blank.";
-    }
-    if (!this.state.reviewTitle) {
-      titleError = "ERROR: Title cannot be blank.";
-    }
-    if (!this.state.rating) {
-      ratingError = "ERROR: Rating cannot be blank.";
-    }
-    if (!this.state.reviewText) {
-      textError = "ERROR: Text cannot be blank.";
-    }
-
-    if (authorError || titleError || ratingError || textError) {
-      this.setState({authorError, titleError, ratingError, textError});
-      return false;
-    }
-    this.setState({authorError, titleError, ratingError, textError});
-    return true;
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    const isValid = this.validate();
-    if (isValid) {
-      this.props.onSubmit({
-        id: shortid.generate(),
-        reviewAuthor: this.state.reviewAuthor,
-        rating: this.state.rating,
-        reviewTitle: this.state.reviewTitle,
-        reviewText: this.state.reviewText,
-        complete: false,
-
+  onSubmit = (e) => {
+    e.preventDefault();
+    if (this.props.onSubmit) this.props.onSubmit(this.state);
+    let data = this.props.data;
+    let reviewList = data.map((reviews) => {
+        return (
+          <li key = {reviews.id}>
+            <ul>
+              <li>Author: {reviews.author}</li>
+              <li>Title: {reviews.title}</li>
+              <li>Rating: {reviews.rating}</li>
+              <li>Review: {reviews.review}</li>
+            </ul>
+          </li>
+        )
       });
-    }
+  }
 
-  };
+  onChange = (e, key) => {
+    this.setState({
+      [key]: this[key].value
+    })
+  }
 
+  renderForm = () => {
+    let model = this.props.model;
+    let formUI = model.map((m) => {
+      let key = m.key;
+      let type = m.type || "text";
+      let props = m.props || {};
+
+      return (
+        <div key = {key} className = 'reviewForm'>
+          <label className = 'reviewLabel' key = {"1" + m.key}
+                 htmlFor = {m.key}>
+                 {m.label}
+          </label>
+          <input {...props}
+                 ref={(key) => {this[m.key] = key}}
+                 className = 'reviewInput'
+                 type = {type}
+                 key = {"i" + m.key}
+                 onChange = {(e) => {this.onChange(e, key)}}
+          />
+        </div>
+      )
+    });
+    return formUI;
+  }
+
+  // renderReviews = () => {
+  //   let data = this.props.data;
+  //   let reviewList = data.map((reviews) => {
+  //     return (
+  //       <li key = {reviews.id}>
+  //         <ul>
+  //           <li>Author: {reviews.author}</li>
+  //           <li>Title: {reviews.title}</li>
+  //           <li>Rating: {reviews.rating}</li>
+  //           <li>Review: {reviews.review}</li>
+  //         </ul>
+  //       </li>
+  //     )
+  //   });
+  // }
 
   render() {
+    let title = this.props.title || "Reviews";
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          name="reviewAuthor"
-          value={this.state.reviewAuthor}
-          onChange={this.handleChange}
-          placeholder="Author"
-        />
-        <div style={{fontSize: 12, color:"red"}}>
-          {this.state.authorError}
-        </div>
-        <input
-          name="reviewTitle"
-          value={this.state.reviewTitle}
-          onChange={this.handleChange}
-          placeholder="Title"
-        />
-        <div style={{fontSize: 12, color:"red"}}>
-          {this.state.titleError}
-        </div>
-        <input
-          name="rating"
-          type="number"
-          value={this.state.rating}
-          onChange={this.handleChange}
-          placeholder="Rating (0-100)"
-        />
-        <div style={{fontSize: 12, color:"red"}}>
-          {this.state.ratingError}
-        </div>
-        <textarea
-          name="reviewText"
-          value={this.state.reviewText}
-          onChange={this.handleChange}
-          placeholder="Review"
-        />
-        <div style={{fontSize: 12, color:"red"}}>
-          {this.state.textError}
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    );
+      <div className = {this.props.className}>
+        <h3>{title}</h3>
+        <form className="review-form" onSubmit={(e) => {this.onSubmit(e)}}>
+          {this.renderForm()}
+          <div className="form-group">
+            <button type="submit">Submit Review</button>
+          </div>
+        </form>
+        <ul>
+
+        </ul>
+      </div>
+    )
   }
 }

@@ -9,8 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       filterTitle: '',
-      filterGenre: ''
-
+      filterGenre: '',
     }
   }
 
@@ -21,32 +20,32 @@ class App extends Component {
     })
   }
 
-  render() {
-    return(
-
-      <div>
-        <div className="nav-bar">
-          <a href="#Home">Home</a>
-          <Search
-            filterUpdate={this.filterUpdate.bind(this)}
-          />
-        </div>
-          <MovieList
-            data={this.props.data}
-            filterTitle={this.state.filterTitle}
-            filterGenre={this.state.filterGenre}
-          />
-      </div>
-    )
-  }
-
   // render() {
   //   return(
+  //
   //     <div>
-  //       <ReviewList />
+  //       <div className="nav-bar">
+  //         <a href="#Home">Home</a>
+  //         <Search
+  //           filterUpdate={this.filterUpdate.bind(this)}
+  //         />
+  //       </div>
+  //         <MovieList
+  //           data={this.props.data}
+  //           filterTitle={this.state.filterTitle}
+  //           filterGenre={this.state.filterGenre}
+  //         />
   //     </div>
   //   )
   // }
+
+  render() {
+    return(
+      <div>
+        <ReviewList />
+      </div>
+    )
+  }
 }
 
 
