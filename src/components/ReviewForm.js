@@ -36,6 +36,9 @@ export default class ReviewForm extends React.Component {
     if (!this.state.rating) {
       ratingError = "ERROR: Rating cannot be blank.";
     }
+    if (this.state.rating < 0 || this.state.rating > 100 ) {
+      ratingError = "ERROR: Rating must be between 0 and 100.";
+    }
     if (!this.state.reviewText) {
       textError = "ERROR: Text cannot be blank.";
     }
@@ -58,8 +61,6 @@ export default class ReviewForm extends React.Component {
         rating: this.state.rating,
         reviewTitle: this.state.reviewTitle,
         reviewText: this.state.reviewText,
-        complete: false,
-
       });
     }
 
@@ -108,6 +109,8 @@ export default class ReviewForm extends React.Component {
         </div>
         <button type="submit">Submit</button>
       </form>
+
+
     );
   }
 }

@@ -15,7 +15,10 @@ export default class ReviewList extends React.Component {
   render() {
     return (
       <div>
+        
+        <p>{JSON.stringify(this.state.reviews)}</p><br/>
         <ReviewForm onSubmit={this.addReview} />
+
       </div>
     )
   }
