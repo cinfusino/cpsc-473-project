@@ -1,9 +1,10 @@
 import React from "react";
 import ReviewForm from "./ReviewForm"
+import shortid from 'shortid';
 export default class ReviewList extends React.Component {
 
   state = {
-    test: [{author: "", title: "", rating: "", review: "", id: 0}]
+    test: []
   }
 
   onSubmit = (model) => {
@@ -14,6 +15,25 @@ export default class ReviewList extends React.Component {
   }
 
   render() {
+
+    const reviewList = this.state.test.map((reviews) => {
+        let id = shortid.generate();
+        if (reviews.author == "") {
+          return <li key = "100"></li>
+        }
+        return (
+          <li key = {id}>
+            <ul>
+              <li>{id}</li>
+              <li>Author: {reviews.author}</li>
+              <li>Title: {reviews.title}</li>
+              <li>Rating: {reviews.rating}</li>
+              <li>Review: {reviews.review}</li>
+            </ul>
+          </li>
+        )
+      });
+
     return (
       <div>
         <ReviewForm title = "Add a Review"
@@ -24,8 +44,10 @@ export default class ReviewList extends React.Component {
                       {key: "review", label: "Review"}
                     ]}
                     onSubmit = {(model) => {this.onSubmit(model)}}
-                    data = {this.state.test}
         />
+        <ul>
+          {reviewList}
+        </ul>
       </div>
     )
   }
