@@ -9,7 +9,6 @@ class Search extends Component {
   }
 
   render() {
-    const { searchType } = this.props;
     return (
       <div>
         <form>

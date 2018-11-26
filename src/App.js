@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       filterTitle: '',
       filterGenre: '',
+      selectedMovie: -1
     }
   }
 
@@ -17,6 +18,13 @@ class App extends Component {
     this.setState({
       filterTitle: title,
       filterGenre: genre
+    })
+  }
+
+  selectMovie(id, title) {
+    this.setState({
+      selectedMovie: id,
+      filterTitle: title
     })
   }
 
@@ -34,18 +42,17 @@ class App extends Component {
             data={this.props.data}
             filterTitle={this.state.filterTitle}
             filterGenre={this.state.filterGenre}
+            selectMovie={this.selectMovie.bind(this)}
+          />
+
+          <ReviewList
+            data={this.props.data}
+            selectedMovie={this.state.selectedMovie}
           />
       </div>
     )
   }
 
-  // render() {
-  //   return(
-  //     <div>
-  //       <ReviewList />
-  //     </div>
-  //   )
-  // }
 }
 
 

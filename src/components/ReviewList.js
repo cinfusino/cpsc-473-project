@@ -6,19 +6,38 @@ export default class ReviewList extends React.Component {
     reviews: []
   };
 
-
   addReview = (review) => {
     this.setState({
       reviews: [review, ...this.state.reviews]
     });
   }
+
   render() {
+    const movieIndex = this.props.selectedMovie;
+    if (movieIndex === -1) return null;
+
+    const reviewList = this.props.data[movieIndex].reviews
+    .map(review => {
+      return(
+        <li key={review.id}>
+          <ul>
+            <li>Title: {review.reviewTitle} </li>
+            <li>Rating: {review.rating} </li>
+            <li>Author: {review.reviewAuthor}</li>
+            <li>Review:<p>{review.reviewText}</p></li>
+          </ul>
+        </li>
+      )
+    })
+
+
     return (
       <div>
-        
-        <p>{JSON.stringify(this.state.reviews)}</p><br/>
-        <ReviewForm onSubmit={this.addReview} />
+        <ul>
+          {reviewList}
+        </ul>
 
+        <ReviewForm onSubmit={this.addReview} />
       </div>
     )
   }
