@@ -7,6 +7,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    console.log(window.location.href)
     this.state = {
       filterTitle: '',
       filterGenre: '',
@@ -20,32 +21,46 @@ class App extends Component {
     })
   }
 
+  rerender(stateReset) {
+    window.location.reload();
+  }
+
+  render() {
+    if (window.location.href === "http://localhost:3000/") {
+      return(
+        <div>
+          <div className="nav-bar">
+            <a onClick={this.rerender} href="#Home">Home</a>
+            <Search
+              filterUpdate={this.filterUpdate.bind(this)}
+            />
+          </div>
+            <MovieList
+              data={this.props.data}
+              filterTitle={this.state.filterTitle}
+              filterGenre={this.state.filterGenre}
+            />
+        </div>
+      )
+    }
+    if (window.location.href === "http://localhost:3000/#Home") {
+      //render() {
+        return(
+          <div>
+            <a onClick={this.rerender} href="/">Back</a>
+            <ReviewList />
+          </div>
+        )
+    }
+  }
+
   // render() {
   //   return(
-  //
   //     <div>
-  //       <div className="nav-bar">
-  //         <a href="#Home">Home</a>
-  //         <Search
-  //           filterUpdate={this.filterUpdate.bind(this)}
-  //         />
-  //       </div>
-  //         <MovieList
-  //           data={this.props.data}
-  //           filterTitle={this.state.filterTitle}
-  //           filterGenre={this.state.filterGenre}
-  //         />
+  //       <ReviewList />
   //     </div>
   //   )
   // }
-
-  render() {
-    return(
-      <div>
-        <ReviewList />
-      </div>
-    )
-  }
 }
 
 
