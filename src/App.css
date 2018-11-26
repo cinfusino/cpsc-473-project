@@ -1,14 +1,22 @@
+/*Main Page CSS*/
+.ul-movie-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 .movie-summary-container {
   display: flex;
   flex-direction: row;
   align-self: center;
   background-color: rgb(69,115,195);
+  border-radius: 10px;
   width: 500px;
   height: 200px;
   margin: 10px;
-  padding: 30px;
-  margin: 30px;
+  padding: 20px;
+  margin: 10px;
 }
 
 .movie-summary-left {
@@ -17,7 +25,6 @@
 
 .movie-summary-right {
   align-items: center;
-  margin-left: 50px;
   width: 100%;
 }
 
@@ -25,7 +32,50 @@
   list-style: none;
   color: #FFF;
   font-size: 17px;
+
 }
+.movie-summary-right ul li {
+  padding-bottom: 5px;
+}
+
 ul {
   list-style-type: none;
+}
+
+
+
+/*Review List Page CSS*/
+.review_List {
+  padding: 0px;
+}
+
+.review_Item {
+  height: 100%;
+  height: inherit;
+  border-style: solid;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.rating_Review {
+  padding-right: 30px;
+  font-weight: bold;
+  display: inline;
+}
+
+.title_Review {
+  font-weight: bold;
+  display: inline;
+}
+
+.review_Review {
+  padding-bottom: 20px;
+  font-weight: bold;
+  border-style: groove;
+}
+
+.author_Review {
+  float:right;
 }

@@ -23,12 +23,11 @@ export default class ReviewList extends React.Component {
         }
         return (
           <li key = {id}>
-            <ul>
-              <li>{id}</li>
-              <li>Author: {reviews.author}</li>
-              <li>Title: {reviews.title}</li>
-              <li>Rating: {reviews.rating}</li>
-              <li>Review: {reviews.review}</li>
+            <ul className="review_Item">
+              <li className="rating_Review">Rating: {reviews.rating}/100</li>
+              <li className="title_Review"> - {reviews.title}</li>
+              <li className="review_Review"> {reviews.review}</li>
+              <li className="author_Review">Reviewed by: {reviews.author}</li>
             </ul>
           </li>
         )
@@ -45,7 +44,7 @@ export default class ReviewList extends React.Component {
                     ]}
                     onSubmit = {(model) => {this.onSubmit(model)}}
         />
-        <ul>
+        <ul className = "review_List">
           {reviewList}
         </ul>
       </div>

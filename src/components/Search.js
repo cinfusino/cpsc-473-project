@@ -11,7 +11,7 @@ class Search extends Component {
   render() {
     const { searchType } = this.props;
     return (
-      <div>
+      <div  className="search-bars">
         <form>
           Search By Title
           <input

@@ -52,7 +52,7 @@ export default ({ data, filterTitle, filterGenre } ) => {
       )
     })
   return(
-    <ul>
+    <ul  className="ul-movie-list">
       {movieList}
     </ul>
   );

@@ -30,7 +30,7 @@ class App extends Component {
       return(
         <div>
           <div className="nav-bar">
-            <a onClick={this.rerender} href="#Home">Home</a>
+            <a onClick={this.rerender} href="#Home">UReview</a>
             <Search
               filterUpdate={this.filterUpdate.bind(this)}
             />
@@ -47,7 +47,9 @@ class App extends Component {
       //render() {
         return(
           <div>
+          <div className="nav-bar">
             <a onClick={this.rerender} href="/">Back</a>
+          </div>
             <ReviewList />
           </div>
         )
