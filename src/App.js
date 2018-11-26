@@ -33,7 +33,7 @@ class App extends Component {
 
       <div>
         <div className="nav-bar">
-          <a href="#Home">Home</a>
+          <a href=" ">Home</a>
           <Search
             filterUpdate={this.filterUpdate.bind(this)}
           />
