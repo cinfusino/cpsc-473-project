@@ -45,6 +45,30 @@ ul {
 
 
 /*Review List Page CSS*/
+
+h3 {
+  margin: 0px;
+  padding: 20px;
+  background-color: #bcf7ff;
+}
+
+.reviewForm {
+  font-weight: bold;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  background-color: #bcf7ff;
+}
+
+.form-group {
+  background-color: #bcf7ff;
+  padding: 10px;
+}
+
+.reviewLabel {
+  padding-right: 10px;
+}
+
+/*Items after submitting Reviews*/
 .review_List {
   padding: 0px;
 }

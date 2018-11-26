@@ -37,10 +37,10 @@ export default class ReviewList extends React.Component {
       <div>
         <ReviewForm title = "Add a Review"
                     model = {[
-                      {key: "author", label:"Author", props: {required: true}},
-                      {key: "title", label: "Title", props: {required: true}},
-                      {key: "rating", label: "Rating", type: "number", props: {required: true}},
-                      {key: "review", label: "Review"}
+                      {key: "author", label:"Author:", props: {required: true}},
+                      {key: "title", label: "Title:", props: {required: true}},
+                      {key: "rating", label: "Rating:", type: "number", props: {required: true}},
+                      {key: "review", label: "Review:"}
                     ]}
                     onSubmit = {(model) => {this.onSubmit(model)}}
         />
