@@ -15,19 +15,6 @@ export default class ReviewForm extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     if (this.props.onSubmit) this.props.onSubmit(this.state);
-    let data = this.props.data;
-    let reviewList = data.map((reviews) => {
-        return (
-          <li key = {reviews.id}>
-            <ul>
-              <li>Author: {reviews.author}</li>
-              <li>Title: {reviews.title}</li>
-              <li>Rating: {reviews.rating}</li>
-              <li>Review: {reviews.review}</li>
-            </ul>
-          </li>
-        )
-      });
   }
 
   onChange = (e, key) => {
@@ -79,6 +66,21 @@ export default class ReviewForm extends React.Component {
   // }
 
   render() {
+    const reviewList = this.props.data.map((reviews) => {
+        if (reviews.author == "") {
+          return <li key = "100"></li>
+        }
+        return (
+          <li key = {reviews.id}>
+            <ul>
+              <li>Author: {reviews.author}</li>
+              <li>Title: {reviews.title}</li>
+              <li>Rating: {reviews.rating}</li>
+              <li>Review: {reviews.review}</li>
+            </ul>
+          </li>
+        )
+      });
     let title = this.props.title || "Reviews";
     return (
       <div className = {this.props.className}>
@@ -90,7 +92,7 @@ export default class ReviewForm extends React.Component {
           </div>
         </form>
         <ul>
-
+          {reviewList}
         </ul>
       </div>
     )

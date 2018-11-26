@@ -26,3 +26,6 @@
   color: #FFF;
   font-size: 17px;
 }
+ul {
+  list-style-type: none;
+}
