@@ -18,13 +18,13 @@ export default ({ data, filterTitle, filterGenre, selectMovie, clicked} ) => {
       }
       if (filterGenre !== "" && filterTitle !== "") {
         console.log(clicked + "3")
-        const movie1 = movie.title.toLowerCase().indexOf(filterTitle.toLowerCase()) >= 0
-        const movie2 = movie.genre.toLowerCase().indexOf(filterGenre.toLowerCase()) >= 0
-        let movie3 = false
-        if(movie1 && movie2) {
-          movie3 = true
+        const filteredTitle = movie.title.toLowerCase().indexOf(filterTitle.toLowerCase()) >= 0
+        const filteredGenre = movie.genre.toLowerCase().indexOf(filterGenre.toLowerCase()) >= 0
+        let allFilters = false
+        if(filteredTitle && filteredGenre) {
+          allFilters = true
         }
-        return movie3
+        return allFilters
       }
       if (filterGenre !== ""){
         console.log(clicked + "4")
@@ -47,7 +47,7 @@ export default ({ data, filterTitle, filterGenre, selectMovie, clicked} ) => {
       avgRating = avgRating.toFixed(2);
 
       return (
-        <li onClick = {() => selectMovie(movie.id, movie.title.toLowerCase()) }key= {movie.id} className="movie-summary-container">
+        <li className="movie-summary-container" onClick = {() => selectMovie(movie.id, movie.title.toLowerCase()) }key= {movie.id} className="movie-summary-container">
           <div className="movie-summary-left">
             <img alt={movie.title} height="200" width="200"src={movie.image}/>
           </div>

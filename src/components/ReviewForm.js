@@ -79,9 +79,11 @@ export default class ReviewForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="reviewForm" onSubmit={this.handleSubmit}>
+        <h3>Add a Review:</h3>
         <input
           name="reviewAuthor"
+          className="reviewAuthor"
           value={this.state.reviewAuthor}
           onChange={this.handleChange}
           placeholder="Author"
@@ -91,6 +93,7 @@ export default class ReviewForm extends React.Component {
         </div>
         <input
           name="reviewTitle"
+          className="reviewTitle"
           value={this.state.reviewTitle}
           onChange={this.handleChange}
           placeholder="Title"
@@ -100,6 +103,7 @@ export default class ReviewForm extends React.Component {
         </div>
         <input
           name="rating"
+          className="rating"
           type="number"
           value={this.state.rating}
           onChange={this.handleChange}
@@ -110,6 +114,7 @@ export default class ReviewForm extends React.Component {
         </div>
         <textarea
           name="reviewText"
+          className="reviewText"
           value={this.state.reviewText}
           onChange={this.handleChange}
           placeholder="Review"
@@ -117,7 +122,9 @@ export default class ReviewForm extends React.Component {
         <div style={{fontSize: 12, color:"red"}}>
           {this.state.textError}
         </div>
-        <button type="submit">Submit</button>
+        <div className="form-group">
+          <button className="" type="submit">Submit</button>
+        </div>
       </form>
 
 

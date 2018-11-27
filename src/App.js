@@ -3,6 +3,7 @@ import './App.css';
 import MovieList from './components/MovieList';
 import ReviewList from './components/ReviewList';
 import Search from './components/Search';
+import Credits from './components/Credits';
 class App extends Component {
 
   constructor(props) {
@@ -35,9 +36,9 @@ class App extends Component {
   render() {
     return(
 
-      <div>
+      <div className="main-container">
         <div className="nav-bar">
-          <a href="/home">Home</a>
+          <a href="/home">UReview</a>
           <Search
             filterUpdate={this.filterUpdate.bind(this)}
           />
@@ -54,6 +55,8 @@ class App extends Component {
             data={this.props.data}
             selectedMovie={this.state.selectedMovie}
           />
+
+          <Credits/>
       </div>
     )
   }
