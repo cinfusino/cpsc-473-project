@@ -18,7 +18,9 @@ class App extends Component {
   filterUpdate(title, genre) {
     this.setState({
       filterTitle: title,
-      filterGenre: genre
+      filterGenre: genre,
+      clicked: false,
+      selectedMovie: -1
     })
   }
 

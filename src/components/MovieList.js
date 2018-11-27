@@ -8,15 +8,15 @@ export default ({ data, filterTitle, filterGenre, selectMovie, clicked} ) => {
         console.log(clicked + "1")
         console.log(movie.title)
         console.log(filterTitle)
-        console.log((movie.title.length == filterTitle.length), "Test")
-        return movie.title.length == filterTitle.length
+        console.log((movie.title.length === filterTitle.length), "Test")
+        return movie.title.length === filterTitle.length
       }
-      if (filterTitle == "" && filterGenre == "")
+      if (filterTitle === "" && filterGenre === "")
       {
         console.log(clicked + "2")
         return movie.title.toLowerCase().indexOf(filterTitle.toLowerCase()) >= 0
       }
-      if (filterGenre != "" && filterTitle != "") {
+      if (filterGenre !== "" && filterTitle !== "") {
         console.log(clicked + "3")
         const movie1 = movie.title.toLowerCase().indexOf(filterTitle.toLowerCase()) >= 0
         const movie2 = movie.genre.toLowerCase().indexOf(filterGenre.toLowerCase()) >= 0
@@ -26,11 +26,11 @@ export default ({ data, filterTitle, filterGenre, selectMovie, clicked} ) => {
         }
         return movie3
       }
-      if (filterGenre != ""){
+      if (filterGenre !== ""){
         console.log(clicked + "4")
         return movie.genre.toLowerCase().indexOf(filterGenre.toLowerCase()) >= 0
       }
-      if (filterTitle != "" && !clicked) {
+      if (filterTitle !== "" && !clicked) {
         console.log(clicked + "5")
         return movie.title.toLowerCase().indexOf(filterTitle.toLowerCase()) >= 0
       }

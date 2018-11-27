@@ -30,11 +30,25 @@ export default class ReviewList extends React.Component {
       )
     })
 
-
+    const formList = this.state.reviews
+    .map(formInput => {
+      return(
+        <li key={formInput.id}>
+          <ul>
+            <li>Title: {formInput.reviewTitle} </li>
+            <li>Rating: {formInput.rating} </li>
+            <li>Author: {formInput.reviewAuthor}</li>
+            <li>Review:<p>{formInput.reviewText}</p></li>
+          </ul>
+        </li>
+      )
+    })
     return (
       <div>
         <ul>
+          {formList}
           {reviewList}
+
         </ul>
 
         <ReviewForm onSubmit={this.addReview} />
