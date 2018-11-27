@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       filterTitle: '',
       filterGenre: '',
-      selectedMovie: -1
+      selectedMovie: -1,
+      clicked: false
     }
   }
 
@@ -24,7 +25,8 @@ class App extends Component {
   selectMovie(id, title) {
     this.setState({
       selectedMovie: id,
-      filterTitle: title
+      filterTitle: title,
+      clicked: true
     })
   }
 
@@ -33,7 +35,7 @@ class App extends Component {
 
       <div>
         <div className="nav-bar">
-          <a href=" ">Home</a>
+          <a href="/home">Home</a>
           <Search
             filterUpdate={this.filterUpdate.bind(this)}
           />
@@ -43,6 +45,7 @@ class App extends Component {
             filterTitle={this.state.filterTitle}
             filterGenre={this.state.filterGenre}
             selectMovie={this.selectMovie.bind(this)}
+            clicked={this.state.clicked}
           />
 
           <ReviewList
