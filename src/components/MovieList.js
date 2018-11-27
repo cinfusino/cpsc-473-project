@@ -6,11 +6,11 @@ export default ({ data, filterTitle, filterGenre } ) => {
       //remove movies that do not match
       if (filterTitle == "" && filterGenre == "")
       {
-        return movie.title.toLowerCase().indexOf(filterTitle) >= 0
+        return movie.title.toLowerCase().indexOf(filterTitle.toLowerCase()) >= 0
       }
       if (filterGenre != "" && filterTitle != "") {
-        const movie1 = movie.title.toLowerCase().indexOf(filterTitle) >= 0
-        const movie2 = movie.genre.toLowerCase().indexOf(filterGenre) >= 0
+        const movie1 = movie.title.toLowerCase().indexOf(filterTitle.toLowerCase()) >= 0
+        const movie2 = movie.genre.toLowerCase().indexOf(filterGenre.toLowerCase()) >= 0
         let movie3 = false
         if(movie1 && movie2) {
           movie3 = true
@@ -18,10 +18,10 @@ export default ({ data, filterTitle, filterGenre } ) => {
         return movie3
       }
       if (filterGenre != ""){
-        return movie.genre.toLowerCase().indexOf(filterGenre) >= 0
+        return movie.genre.toLowerCase().indexOf(filterGenre.toLowerCase()) >= 0
       }
       if (filterTitle != "") {
-        return movie.title.toLowerCase().indexOf(filterTitle) >= 0
+        return movie.title.toLowerCase().indexOf(filterTitle.toLowerCase()) >= 0
       }
     })
     .map(movie => {

@@ -25,6 +25,13 @@ class App extends Component {
     window.location.reload();
   }
 
+  selectMovie(id, title) {
+    this.setState({
+      selectedMovie: id,
+      filterTitle: title
+    })
+  }
+
   render() {
     if (window.location.href === "http://localhost:3000/") {
       return(
