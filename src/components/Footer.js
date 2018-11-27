@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default () =>
-  <div className="credits">
+  <div className="footer">
     <p>
       Created by Daniel Domingo, Jared Fipps, and Carmine Infusino using
         {' '}

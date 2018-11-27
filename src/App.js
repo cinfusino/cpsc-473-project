@@ -3,7 +3,7 @@ import './App.css';
 import MovieList from './components/MovieList';
 import ReviewList from './components/ReviewList';
 import Search from './components/Search';
-import Credits from './components/Credits';
+import Footer from './components/Footer';
 class App extends Component {
 
   constructor(props) {
@@ -56,7 +56,7 @@ class App extends Component {
             selectedMovie={this.state.selectedMovie}
           />
 
-          <Credits/>
+          <Footer/>
       </div>
     )
   }
