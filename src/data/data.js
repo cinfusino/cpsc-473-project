@@ -4,7 +4,7 @@ export default [
     title: 'Star Wars: The Last Jedi',
     genre: 'Sci-Fi',
     movieLength: 155,
-    image: 'https://lumiere-a.akamaihd.net/v1/images/og-generic_02031d2b.png?region=0%2C0%2C1200%2C1200',
+    image: 'https://lumiere-a.akamaihd.net/v1/images/sb_payoff_1-sht_v6_lg_tm_lg_e528c9e9.jpeg?region=0%2C0%2C810%2C1200',
     reviews:[
   		{
         id: 0,
@@ -16,9 +16,9 @@ export default [
       {
         id: 1,
         reviewAuthor:'Jared Fipps',
-        rating:50,
-        reviewTitle:'Movie was less than average.',
-        reviewText:'I didn\'t really care about it.'
+        rating:20,
+        reviewTitle:'Don\'t waste your money.',
+        reviewText:'This movie was garbage'
   		},
       {
         id: 2,
