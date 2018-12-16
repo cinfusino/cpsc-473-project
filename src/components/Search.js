@@ -9,19 +9,16 @@ class Search extends Component {
   }
 
   render() {
-    const { searchType } = this.props;
     return (
       <div>
         <form>
-          Search By Title
+          Search By Title <br/>
           <input
             type="text"
             ref={ (value) => {this.searchTitle = value}}
             onChange={this.filterUpdate.bind(this)}
           />
-        </form>
-        <form>
-          Search By Genre
+          <br/>Search By Genre <br/>
           <input
             type="text"
             ref={ (value) => {this.searchGenre = value}}

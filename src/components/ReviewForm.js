@@ -27,24 +27,37 @@ export default class ReviewForm extends React.Component {
     let ratingError = "";
     let textError = "";
 
+    console.log("reviewAuthor:", this.state.reviewAuthor)
+    console.log("rating:", this.state.rating)
+    console.log("reviewTitle:", this.state.reviewTitle)
+    console.log("reviewText:", this.state.reviewText)
+
     if (!this.state.reviewAuthor) {
       authorError = "ERROR: Author cannot be blank.";
+      console.log("1");
     }
     if (!this.state.reviewTitle) {
       titleError = "ERROR: Title cannot be blank.";
+      console.log("2");
     }
     if (!this.state.rating) {
       ratingError = "ERROR: Rating cannot be blank.";
+      console.log("3");
+    }
+    if (this.state.rating < 0 || this.state.rating > 100 ) {
+      ratingError = "ERROR: Rating must be between 0 and 100.";
     }
     if (!this.state.reviewText) {
       textError = "ERROR: Text cannot be blank.";
+      console.log("4");
     }
 
     if (authorError || titleError || ratingError || textError) {
+      console.log("Error somewhere");
       this.setState({authorError, titleError, ratingError, textError});
       return false;
     }
-    this.setState({authorError, titleError, ratingError, textError});
+
     return true;
   };
 
@@ -58,8 +71,6 @@ export default class ReviewForm extends React.Component {
         rating: this.state.rating,
         reviewTitle: this.state.reviewTitle,
         reviewText: this.state.reviewText,
-        complete: false,
-
       });
     }
 
@@ -68,9 +79,11 @@ export default class ReviewForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="reviewForm" onSubmit={this.handleSubmit}>
+        <h3>Add a Review:</h3>
         <input
           name="reviewAuthor"
+          className="reviewAuthor"
           value={this.state.reviewAuthor}
           onChange={this.handleChange}
           placeholder="Author"
@@ -80,6 +93,7 @@ export default class ReviewForm extends React.Component {
         </div>
         <input
           name="reviewTitle"
+          className="reviewTitle"
           value={this.state.reviewTitle}
           onChange={this.handleChange}
           placeholder="Title"
@@ -89,6 +103,7 @@ export default class ReviewForm extends React.Component {
         </div>
         <input
           name="rating"
+          className="rating"
           type="number"
           value={this.state.rating}
           onChange={this.handleChange}
@@ -99,6 +114,7 @@ export default class ReviewForm extends React.Component {
         </div>
         <textarea
           name="reviewText"
+          className="reviewText"
           value={this.state.reviewText}
           onChange={this.handleChange}
           placeholder="Review"
@@ -106,8 +122,12 @@ export default class ReviewForm extends React.Component {
         <div style={{fontSize: 12, color:"red"}}>
           {this.state.textError}
         </div>
-        <button type="submit">Submit</button>
+        <div className="form-group">
+          <button className="" type="submit">Submit</button>
+        </div>
       </form>
+
+
     );
   }
 }
